@@ -8,8 +8,8 @@ H.J. Kuijf, S.J. van Veluw, M.I. Geerlings, M.A. Viergever, G.J. Biessels, K.L. 
 ## Instructions
 The code uses the self-contained project structure introduced in [MeVisLab](http://www.mevislab.de/) 2.7. To use this in your own projects, please do the following:
 
-1. Create a new project in one of you packages
-2. Download the source code and put in the project
+1. Create a new project in one of your packages
+2. Download the source code and put it in the project
 3. Download the dependencies [ALGLIB](https://github.com/hjkuijf/ALGLIB) and [dlib](https://github.com/hjkuijf/dlib).
 4. Compile all sources
 
