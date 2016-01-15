@@ -1,0 +1,186 @@
+ModuleHelp  {
+  MetaInformation  {
+    definition = Projects/ISIMidsagittal/Modules/ISIMidsagittal.def
+    moduleName = MidsagittalPlane
+    moduleType = MLModule
+    author = "Hugo Kuijf"
+    DLL = ISIMidsagittal
+    genre = ""
+    keywords = "brain midsagittal plane surface ct mri"
+    seeAlso = MidsagittalSurface
+    package = Neuro
+    packageGroup = ISI
+  }
+  Purpose  {
+    text = "Module to extract the mid-sagittal plane from brain images. This module implements the algorithm described by Volkau et al. When using this module, please cite the following articles:
+
+Volkau, I., Prakash, K. B., Ananthasubramaniam, A., Aziz, A., & Nowinski, W. L. (2006). Extraction of the midsagittal plane from morphological neuroimages using the Kullback-Leibler's measure. Medical Image Analysis, 10(6), 863-874. http://dx.doi.org/10.1016/j.media.2006.07.005
+
+Kuijf, H. J., Leemans, A., Viergever, M. A., & Vincken, K. L. (2013). Assessment of methods to extract the mid-sagittal plane from brain MR images, SPIE 8673, Medical Imaging 2013: Image Perception, Observer Performance, and Technology Assessment, 86731K (March 28, 2013) http://dx.doi.org/10.1117/12.2006858"
+  }
+  Usage  {
+    text = "Connect an input image and press update."
+  }
+  Details  {
+    text = "Use the automatic panel to set the number of bins to a value <= the number of gray values in the image. This method uses two reference planes, as described by Volkau et al.
+
+The input image must be transversal.
+
+The optional mask image is unused."
+  }
+  Interaction  {
+    text = ""
+  }
+  Tips  {
+    text = ""
+  }
+  Windows  {
+    text = ""
+    Window _default {
+      title = ""
+      text = ".. screenshot:: _default"
+    }
+  }
+  Inputs  {
+    text = ""
+    Field input0 {
+      type = Image
+      text = "Transversal input image."
+    }
+  }
+  Outputs  {
+    text = ""
+    Field output0 {
+      type = Image
+      text = "Image of the intensity values along the computed plane."
+    }
+  }
+  Parameters  {
+    Field instanceName {
+      type = String
+      text = ""
+      title = ""
+      needsDocumentation = No
+      visibleInGUI = No
+      persistent = Yes
+      default = MidsagittalPlane
+    }
+    Field update {
+      type = Trigger
+      text = "Initiates update of all output field values."
+      title = Update
+      visibleInGUI = Yes
+      persistent = Yes
+      default = ""
+    }
+    Field clear {
+      type = Trigger
+      text = "Clears all output field values to a clean initial state."
+      title = Clear
+      visibleInGUI = Yes
+      persistent = Yes
+      default = ""
+    }
+    Field onInputChangeBehavior {
+      type = Enum
+      deprecatedName = shouldUpdateAutomatically,shouldAutoUpdate
+      text = "Declares how the module should react if a value of an input field changes."
+      title = "On Input Change Behavior"
+      visibleInGUI = Yes
+      items  {
+        item Update {
+          title = Update
+          text = ""
+          deprecatedName = TRUE
+        }
+        item Clear {
+          title = Clear
+          text = ""
+          deprecatedName = FALSE
+        }
+      }
+      persistent = Yes
+      default = Clear
+    }
+    Field statusCode {
+      type = Enum
+      text = "Reflects module's status (successful or failed computations) as one of some predefined enumeration values."
+      title = "Status Code"
+      visibleInGUI = Yes
+      items  {
+        item Ok {
+          title = Ok
+          text = ""
+        }
+        item "Invalid input object" {
+          title = "Invalid input object"
+          text = ""
+        }
+        item "Invalid input parameter" {
+          title = "Invalid input parameter"
+          text = ""
+        }
+        item "Internal error" {
+          title = "Internal error"
+          text = ""
+        }
+      }
+      persistent = No
+    }
+    Field statusMessage {
+      type = String
+      text = "Gives additional, detailed information about status code as human-readable message."
+      title = "Status Message"
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field hasValidOutput {
+      type = Bool
+      text = "Indicates validity of output field values (success of computation)."
+      title = "Has Valid Output"
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field updateDone {
+      type = Trigger
+      text = "Notifies that an update was performed (Check status interface fields to identify success or failure)."
+      title = []
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field inBins {
+      type = Integer
+      text = "Number of histogram bins"
+      title = Bins
+      visibleInGUI = Yes
+      persistent = Yes
+      default = 64
+      deprecatedName = bins
+    }
+    Field outPlane {
+      type = Plane
+      text = "Midsagittal plane"
+      title = Plane
+      visibleInGUI = Yes
+      persistent = No
+      deprecatedName = outputPlane
+    }
+    Field outCMSPx {
+      type = Integer
+      text = "Central midsagittal slice"
+      title = CMSPx
+      visibleInGUI = Yes
+      persistent = No
+      deprecatedName = cMSPx
+    }
+    Field outLog {
+      type = String
+      text = "Log information"
+      title = ""
+      visibleInGUI = No
+      persistent = No
+      deprecatedName = log
+    }
+    text = ""
+  }
+}

@@ -1,0 +1,96 @@
+Description {
+  #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/MLAlgorithmModule/Modules/Description.mdl"
+
+  Field input0 {
+    comment = "Comment missing."
+  }
+  Field output0 {
+    comment = "Comment missing."
+  }
+  Field inPlane {
+    comment = "Comment missing."
+  }
+  Field inIntersectionMode {
+    comment = "Comment missing."
+  }
+  Field inVolumeThreshold {
+    comment = "Comment missing."
+    min     = 0
+    max     = 1
+  }
+  Field inUseGlobalSubsample {
+    comment = "Comment missing."
+  }
+  Field inGlobalSubsample {
+    comment = "Comment missing."
+    min     = 1
+    max     = 6
+  }
+  Field inXSubsample {
+    comment = "Comment missing."
+    min     = 1
+    max     = 6
+  }
+  Field inYSubsample {
+    comment = "Comment missing."
+    min     = 1
+    max     = 6
+  }
+  Field inZSubsample {
+    comment = "Comment missing."
+    min     = 1
+    max     = 6
+  }
+}
+
+Window {
+  Vertical {
+    margin = 3
+
+    Box "Input" {
+      expandX = True
+      expandY = False
+      Field inPlane { title = "Midsagittal plane" }
+      Field inIntersectionMode { title = "Intersection mode:" }
+      Field inVolumeThreshold { 
+        title     = "Volume threshold:" 
+        step      = 0.1
+        dependsOn = "* inIntersectionMode == "volume" *"
+      }
+      CheckBox inUseGlobalSubsample {
+        title     = "Use global subsample" 
+        dependsOn = "* inIntersectionMode == "volume" || inIntersectionMode == "antialiasing" *"
+      }
+      Horizontal {
+        alignX = Left
+        
+        Field inGlobalSubsample {
+          title     = "Subsample:"
+          dependsOn = "* inUseGlobalSubsample && (inIntersectionMode == "volume" || inIntersectionMode == "antialiasing") *"
+          visibleOn = inUseGlobalSubsample
+          step      = 1 
+        }
+        Field inXSubsample { 
+          dependsOn = !inUseGlobalSubsample
+          visibleOn = !inUseGlobalSubsample
+          title     = "X:"
+          step      = 1
+        }
+        Field inYSubsample {
+          dependsOn = !inUseGlobalSubsample
+          visibleOn = !inUseGlobalSubsample
+          title     = "Y:"
+          step      = 1
+        }
+        Field inZSubsample {
+          dependsOn = !inUseGlobalSubsample
+          visibleOn = !inUseGlobalSubsample
+          title     = "Z:"
+          step      = 1
+        }
+      }
+    }
+
+    #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/MLAlgorithmModule/Modules/Window.mdl"
+  }
+}

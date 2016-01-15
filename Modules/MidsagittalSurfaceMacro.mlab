@@ -1,0 +1,300 @@
+// MDL v1 utf8
+network  {
+  watchlist = ""
+}
+module MemoryCache {
+  internal  {
+    frame = "65 101 112 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "697 509 301 91"
+        sizeHint = "301 91"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MemoryCache
+    updateMode = Off
+  }
+}
+module MidsagittalSurface {
+  internal  {
+    frame = "-99 177 136 64"
+    moduleGroupName = MidsagittalSurfaceMacro
+    windows  {
+      window _default {
+        geometry = "1015 328 357 666"
+        sizeHint = "326 666"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "64 241 500 600"
+        sizeHint = "260 223"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MidsagittalSurface
+    onInputChangeBehavior = Clear
+    inPlane1 = "1 0 0 0"
+    inPlane2 = "1 0 0 0"
+    inUseSecondPlane = FALSE
+    inCMSPx = 0
+    inBins = 64
+    inGridSize = 30
+    inMaxSize = 1000
+    inDelta = 1e-05
+    inEps = 1
+    inOptimizer = lbfgs
+  }
+}
+module MidsagittalPlane {
+  internal  {
+    frame = "85 181 72 56"
+    moduleGroupName = MidsagittalSurfaceMacro
+    windows  {
+      window _default {
+        geometry = "157 618 331 357"
+        sizeHint = "326 357"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "66 473 500 600"
+        sizeHint = "260 223"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MidsagittalPlane
+    onInputChangeBehavior = Clear
+    inBins = 64
+  }
+}
+module Bypass {
+  internal  {
+    frame = "-43 605 72 56"
+    moduleGroupName = MidsagittalSurfaceMacro
+  }
+  fields  {
+    instanceName = Bypass
+    noBypass = FALSE
+  }
+}
+module OrthoReformat3 {
+  internal  {
+    frame = "-75 733 120 56"
+    moduleGroupName = MidsagittalSurfaceMacro
+    windows  {
+      window _default {
+        geometry = "711 426 272 256"
+        sizeHint = "272 256"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OrthoReformat3
+    useGlobalInputImage = TRUE
+  }
+}
+module SubImage {
+  internal  {
+    frame = "133 345 88 64"
+    moduleGroupName = MidsagittalSurfaceMacro
+    windows  {
+      window _default {
+        geometry = "135 316 395 533"
+        sizeHint = "395 533"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Anterior
+    boxInput = "0 0 0 0 0 0 -1 -1 -1 -1 -1 -1"
+    autoApplyBox = FALSE
+    correctForNegativeSubImageExtents = FALSE
+    enableBoxClamping = FALSE
+    x = 0
+    sx = 80
+    modifyX = FALSE
+    y = 0
+    sy = 54
+    modifyY = TRUE
+    z = 0
+    sz = 91
+    modifyZ = FALSE
+    c = 0
+    sc = 1
+    modifyC = FALSE
+    t = 0
+    st = 1
+    modifyT = FALSE
+    u = 0
+    su = 1
+    modifyU = FALSE
+    fillValue = 0
+    mode = VoxelStartSize
+    autoApply = TRUE
+  }
+}
+module SubImage {
+  internal  {
+    frame = "269 353 88 64"
+    moduleGroupName = MidsagittalSurfaceMacro
+    windows  {
+      window _default {
+        geometry = "216 127 395 533"
+        sizeHint = "395 533"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Posterior
+    boxInput = "0 0 0 0 0 0 -1 -1 -1 -1 -1 -1"
+    autoApplyBox = FALSE
+    correctForNegativeSubImageExtents = FALSE
+    enableBoxClamping = FALSE
+    x = 0
+    sx = 32
+    modifyX = FALSE
+    y = 54
+    sy = 109
+    modifyY = TRUE
+    z = 0
+    sz = 32
+    modifyZ = FALSE
+    c = 0
+    sc = 1
+    modifyC = FALSE
+    t = 0
+    st = 1
+    modifyT = FALSE
+    u = 0
+    su = 1
+    modifyU = FALSE
+    fillValue = 0
+    mode = VoxelStartEnd
+    autoApply = TRUE
+  }
+}
+module Info {
+  internal  {
+    frame = "293 461 56 56"
+    moduleGroupName = MidsagittalSurfaceMacro
+    windows  {
+      window _default {
+        geometry = "460 571 564 375"
+        sizeHint = "564 375"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Info
+  }
+}
+module Calculator {
+  internal  {
+    frame = "125 461 88 56"
+    moduleGroupName = MidsagittalSurfaceMacro
+    windows  {
+      window _default {
+        geometry = "886 288 700 650"
+        sizeHint = "700 650"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Calculator
+    exp1 = i1/2
+    exp2 = ""
+    exp3 = ""
+    exp4 = ""
+    exp5 = ""
+    exp6 = ""
+    exp7 = ""
+    exp8 = ""
+    i1 = 109
+    i2 = 0
+    i3 = 0
+    i4 = 0
+    i5 = 0
+    i6 = 0
+    d1 = 0
+    d2 = 0
+    d3 = 0
+    d4 = 0
+    d5 = 0
+    d6 = 0
+    d7 = 0
+    d8 = 0
+    d9 = 0
+    d10 = 0
+    d11 = 0
+    d12 = 0
+    v1 = "0 0 0"
+    v2 = "0 0 0"
+    v3 = "0 0 0"
+    v4 = "0 0 0"
+    v5 = "0 0 0"
+    v6 = "0 0 0"
+    domainErrorHandling = Nothing
+    applyMode = AutoApply
+    exp1Comment = ""
+    exp2Comment = ""
+    exp3Comment = ""
+    exp4Comment = ""
+    exp5Comment = ""
+    exp6Comment = ""
+    exp7Comment = ""
+    exp8Comment = ""
+    scalarVariablesComment = ""
+    vectorVariablesComment = ""
+    resultVector1_x = 0
+    resultVector1_y = 0
+    resultVector1_z = 0
+    resultVector2_x = 0
+    resultVector2_y = 0
+    resultVector2_z = 0
+    resultVector3_x = 0
+    resultVector3_y = 0
+    resultVector3_z = 0
+    resultVector4_x = 0
+    resultVector4_y = 0
+    resultVector4_z = 0
+    resultVector5_x = 0
+    resultVector5_y = 0
+    resultVector5_z = 0
+    resultVector6_x = 0
+    resultVector6_y = 0
+    resultVector6_z = 0
+    resultVector7_x = 0
+    resultVector7_y = 0
+    resultVector7_z = 0
+    resultVector8_x = 0
+    resultVector8_y = 0
+    resultVector8_z = 0
+  }
+}
+connections  {
+  MemoryCache.input0 = MidsagittalPlane.output0
+  MidsagittalSurface.input0 = Bypass.output0
+  MidsagittalSurface.inBins = MidsagittalPlane.inBins
+  MidsagittalPlane.input0 = Bypass.output0
+  Bypass.input0 = OrthoReformat3.output2
+  Anterior.input0 = Bypass.output0
+  Anterior.sy = Calculator.resultScalar1
+  Posterior.input0 = Bypass.output0
+  Posterior.y = Calculator.resultScalar1
+  Posterior.sy = Info.sizeY
+  Info.input0 = Bypass.output0
+  Calculator.i1 = Info.sizeY
+}
+networkModel = ""

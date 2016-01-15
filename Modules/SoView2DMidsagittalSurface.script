@@ -1,0 +1,22 @@
+//----------------------------------------------------------------------------------
+//! ISIMidsagittal module definitions
+/*!
+// \file    SoView2DMidsagittalSurface.script
+// \author  Hugo
+// \date    2015-08-17
+*/
+//----------------------------------------------------------------------------------
+
+
+Description {
+  Field inMidsagittalSurface {
+    comment = "Midsagittal surface"
+    hidden = NO
+  }
+}
+
+Window {
+  Vertical {
+    margin = 3
+  }
+}  

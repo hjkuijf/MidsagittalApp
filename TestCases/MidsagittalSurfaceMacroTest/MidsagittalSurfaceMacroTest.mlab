@@ -1,0 +1,17 @@
+// MDL v1 utf8
+network {
+  watchlist = ""
+}
+module MidsagittalSurfaceMacro {
+  internal  {
+    frame = "0 0 0 0"
+    moduleGroupName = ""
+  }
+  fields {
+    instanceName = MidsagittalSurfaceMacro
+    onInputChangeBehavior = Clear
+  }
+}
+connections {
+}
+networkModel = ""

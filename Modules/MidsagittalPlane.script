@@ -1,0 +1,50 @@
+Description {
+  #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/MLAlgorithmModule/Modules/Description.mdl"
+
+  Field input0 {
+    comment = "Comment missing."
+  }
+  Field output0 {
+    comment = "Comment missing."
+  }
+  Field inBins {
+    comment = "Number of histogram bins"
+    deprecatedName = bins
+  }
+  Field outPlane {
+    comment = "Midsagittal plane"
+    editable = False
+    deprecatedName = outputPlane
+  }
+  Field outCMSPx {
+    comment = "Central midsagittal slice"
+    editable = False
+    deprecatedName = cMSPx
+  }
+  Field outLog {
+    comment = "Log information"
+    editable = False
+    deprecatedName = log
+  }
+}
+
+Window {
+  Vertical {
+    margin = 3
+
+    Box "Input" {
+      expandX = True
+      expandY = False
+      Field inBins { title = "Bins:" }
+    }
+
+    Box "Output" {
+      expandX = True
+      expandY = False
+      Field outPlane { title = "Plane:" }
+      Field outCMSPx { title = "CMSPx:" }
+    }
+
+    #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/MLAlgorithmModule/Modules/Window.mdl"
+  }
+}

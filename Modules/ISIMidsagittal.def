@@ -1,0 +1,77 @@
+
+MLModule MidsagittalPlane {
+  DLL                = "ISIMidsagittal"
+  author             = "Hugo Kuijf"
+  comment            = "Module to compute the mid-sagittal plane"
+  keywords           = "brain midsagittal plane surface ct mri"
+  seeAlso            = "MidsagittalSurface"
+  externalDefinition = "$(LOCAL)/MidsagittalPlane.script"
+  associatedTests    = "MidsagittalPlaneTest"
+  
+  deprecatedName = Volkau
+}
+
+MLModule MidsagittalPlaneSplit {
+  DLL                = "ISIMidsagittal"
+  author             = "Hugo Kuijf"
+  comment            = "Split an image into left/right according to the results of MidsagittalPlane"
+  keywords           = "brain midsagittal plane surface ct mri"
+  seeAlso            = "MidsagittalSurface"
+  externalDefinition = "$(LOCAL)/MidsagittalPlaneSplit.script"
+  associatedTests    = "MidsagittalPlaneSplitTest"
+}
+
+MLModule MidsagittalSurface {
+  DLL                = "ISIMidsagittal"
+  author             = "Hugo Kuijf"
+  comment            = "Module to compute the curved mid-sagittal surface"
+  keywords           = "brain midsagittal plane surface ct mri"
+  seeAlso            = "MidsagittalPlane"
+  externalDefinition = "$(LOCAL)/MidsagittalSurface.script"
+  associatedTests    = "MidsagittalSurfaceTest"
+  
+  deprecatedName = VolkauCurve
+}
+
+MLModule MidsagittalSurfaceSplit {
+  DLL                = "ISIMidsagittal"
+  author             = "Hugo Kuijf"
+  comment            = "Split an image into left/right according to the results of MidsagittalSurface"
+  keywords           = "brain midsagittal plane surface ct mri"
+  seeAlso            = "MidsagittalSurface"
+  externalDefinition = "$(LOCAL)/MidsagittalSurfaceSplit.script"
+  associatedTests    = "MidsagittalSurfaceSplitTest"
+  
+  deprecatedName = SplineSplit
+}
+
+InventorModule SoView2DMidsagittalSurface {
+  DLL                = "ISIMidsagittal"
+
+  genre              = ""
+  author             = "Hugo Kuijf"
+  comment            = ""
+  keywords           = ""
+  seeAlso            = ""
+  externalDefinition = "$(LOCAL)/SoView2DMidsagittalSurface.script"
+}
+
+MacroModule MidsagittalSurfaceMacro {
+  author             = "Hugo Kuijf"
+  comment            = ""
+  keywords           = ""
+  seeAlso            = ""
+  externalDefinition = "$(LOCAL)/MidsagittalSurfaceMacro.script"
+  associatedTests    = "MidsagittalSurfaceMacroTest"
+}
+
+MacroModule MidsagittalApp {
+  genre    = "ApplicationsMenu"
+  author   = "Hugo Kuijf"
+  comment  = ""
+  keywords = "brain midsagittal plane surface mri ct"
+  seeAlso  = "MidsagittalPlane MidsagittalSurface MidsagittalSurfaceMacro"
+  status   = stable
+   
+  externalDefinition = "$(LOCAL)/MidsagittalApp.script"
+}

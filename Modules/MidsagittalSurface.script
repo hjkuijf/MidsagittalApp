@@ -1,0 +1,83 @@
+Description {
+  #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/MLAlgorithmModule/Modules/Description.mdl"
+
+  Field input0 {
+    comment = "Comment missing."
+  }
+  Field input1 {
+    comment = "Comment missing."
+  }
+  Field output0 {
+    comment = "Comment missing."
+  }
+  Field inPlane1 {
+    comment = "Plane used to initialize the method (for example: output of MidsagittalPlane)"
+  }
+  Field inPlane2 {
+    comment = "Second plane used to initialize the method (for example: output of MidsagittalPlane)"
+  }
+  Field inUseSecondPlane {
+    comment = "Comment missing."
+  }
+  Field inCMSPx {
+    comment = "Central slice of the plane, in voxel-coordinates. Used to compute the reference-slices."
+  }
+  Field inBins {
+    comment = "Histogram bins"
+  }
+  Field inGridSize {
+    comment = "Size of the grid in mm"
+  }
+  Field inMaxSize {
+    comment = "Optimizer stuff, see documentation"
+  }
+  Field inDelta {
+    comment = "Optimizer stuff, see documentation"
+  }
+  Field inEps {
+    comment = "Optimizer stuff, see documentation"
+  }
+  Field inOptimizer {
+    comment = "Optimizer"
+  }
+}
+
+Window {
+  Vertical {
+    margin = 3
+
+    Box "Input" {
+      expandX = True
+      expandY = False
+      
+      
+      Field inPlane1 { 
+        title = "Plane 1:"
+      }
+      Field inPlane2 {
+        title     = "Plane 2:" 
+        dependsOn = inUseSecondPlane
+      }
+      
+      CheckBox inUseSecondPlane { title = "Use second plane" }
+      Field inCMSPx { title = "Central slice:" }
+      Field inBins { title = "Bins:" }
+      Field inGridSize { title = "Grid size (mm):" }
+      
+      
+      Box Optimizer {
+        Field inOptimizer { title = "Optimizer" }
+        Field inMaxSize { title = "MaxSize:" }
+        Label { title = "Threshold for the Objective Delta Stop Strategy, which is used to stop the optimization." textWrap = WordBreak }
+        Field inDelta { title = "Delta:" }
+        Field inEps { title = "Eps:" }
+      }
+    }
+
+    #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/MLAlgorithmModule/Modules/Window.mdl"
+    
+    HyperLabel {
+      title = "* See: <a href="http://dx.doi.org/10.1007/s12021-013-9215-0">http://dx.doi.org/10.1007/s12021-013-9215-0</a> *"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+// MDL v1 utf8
+network {
+  watchlist = ""
+}
+module MidsagittalSurfaceSplit {
+  internal  {
+    frame = "0 0 0 0"
+    moduleGroupName = ""
+  }
+  fields {
+    instanceName = MidsagittalSurfaceSplit
+    onInputChangeBehavior = Clear
+  }
+}
+module LocalImage {
+  internal  {
+    frame = "0 150 0 0"
+    moduleGroupName = ""
+  }
+  fields {
+    instanceName = Load_input0
+    autoLoad = FALSE
+  }
+}
+module LocalBase {
+  internal  {
+    frame = "150 150 0 0"
+    moduleGroupName = ""
+  }
+  fields {
+    instanceName = Load_inMidsagittalSurface
+    autoLoad = FALSE
+  }
+}
+module LocalImage {
+  internal  {
+    frame = "0 -150 0 0"
+    moduleGroupName = ""
+  }
+  fields {
+    instanceName = Load_output0_Reference
+    autoLoad = FALSE
+  }
+}
+module ImageCompare {
+  internal  {
+    frame = "0 -300 0 0"
+    moduleGroupName = ""
+  }
+  fields {
+    instanceName = Validate_output0
+    status = ""
+    epsilon = 1e-16
+    voxValEpsilon = 1e-16
+    tPrecisionEpsilon = 3
+    checkDataType = TRUE
+    checkImgExt = TRUE
+    checkPageExt = TRUE
+    checkMinVoxVal = TRUE
+    checkMaxVoxVal = TRUE
+    checkUpToDate = TRUE
+    checkVoxelSize = TRUE
+    checkWorldMatrix = TRUE
+    checkIsWorldMatrixValid = TRUE
+    checkCDimInfos = FALSE
+    checkTDimInfos = FALSE
+    checkUDimInfos = FALSE
+    checkImgPropExts = FALSE
+    checkVoxelData = TRUE
+    postErrorOnDiff = TRUE
+    additionalPostMessage1 = ""
+    additionalPostMessage2 = ""
+    compareAllVoxels = FALSE
+    inp1Val = 0
+    compareIf2ndInputIsOpen = FALSE
+    handleOpenInputsAsErr = AnyOpenInputIsError
+    updateMode = AutoClear
+  }
+}
+connections {
+  MidsagittalSurfaceSplit.input0 = Load_input0.outImage
+  MidsagittalSurfaceSplit.inMidsagittalSurface = Load_inMidsagittalSurface.outObject
+  Validate_output0.input0 = MidsagittalSurfaceSplit.output0
+  Validate_output0.input1 = Load_output0_Reference.outImage
+}
+networkModel = ""

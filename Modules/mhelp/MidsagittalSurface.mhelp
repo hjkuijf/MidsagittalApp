@@ -1,0 +1,261 @@
+ModuleHelp  {
+  MetaInformation  {
+    definition = Projects/ISIMidsagittal/Modules/ISIMidsagittal.def
+    moduleName = MidsagittalSurface
+    moduleType = MLModule
+    author = "Hugo Kuijf"
+    DLL = ISIMidsagittal
+    genre = ""
+    keywords = "brain midsagittal plane surface ct mri"
+    seeAlso = MidsagittalPlane
+    package = Neuro
+    packageGroup = ISI
+  }
+  Purpose  {
+    text = "*Compute the curved midsagittal surface from brain images.
+
+If you use this module, please cite:
+
+H.J. Kuijf, S.J. van Veluw, M.I. Geerlings, M.A. Viergever, G.J. Biessels, K.L. Vincken, "Automatic extraction of the midsagittal surface from brain MR images using the Kullback-Leibler measure", Neuroinformatics, 2014, nr. 3, vol. 12, pp. 395-403 http://dx.doi.org/10.1007/s12021-013-9215-0*"
+  }
+  Usage  {
+    text = "First, compute the midsagittal plane using the module :module:`MidsagittalPlane` (or another module, UMC Utrecht users, see :module:`Hu` or :module:`Liu`).
+
+Next, connect the resulting midsagittal plane to :field:`inPlane1`, connect the :field:`MidsagittalPlane.outCMSPx` field of :module:`MidsagittalPlane` to :field:`inCMSPx` (for other input modules, please provide a sagittal slice that is close to the midsagittal plane).
+
+The :field:`inGridSize` is used to specify the distance between the control points of the regular grid that is optimized to be the midsagittal surface. A value of 30 mm is recommended (see the paper).
+
+:field:`inOptimizer` should be lbfgs. :field:`inDelta` should be 1e-05."
+  }
+  Details  {
+    text = "Please use a small value for :field:`inBins`, also in :module:`MidsagittalPlane`. A value of 64 is recommended."
+  }
+  Interaction  {
+    text = ""
+  }
+  Tips  {
+    text = ""
+  }
+  Windows  {
+    text = ""
+    Window _default {
+      title = ""
+      text = ".. screenshot:: _default"
+    }
+  }
+  Inputs  {
+    text = ""
+    Field input0 {
+      type = Image
+      text = "Transversal brain image."
+    }
+    Field input1 {
+      type = Image
+      text = "Optional mask image. The KL measure is only evaluated inside the mask. This can be used to e.g. remove the ventricles."
+    }
+  }
+  Outputs  {
+    text = ""
+    Field output0 {
+      type = Image
+      text = "Pixel values along the (curved) midsagittal surface. This is a 2D image."
+    }
+    Field outXMarkerList {
+      type = MLBase
+      text = "Control points of the regular grid after optimization"
+    }
+    Field outSpline {
+      type = MLBase
+      text = "Spline object, i.e. the midsagittal surface"
+    }
+  }
+  Parameters  {
+    Field instanceName {
+      type = String
+      text = ""
+      title = ""
+      needsDocumentation = No
+      visibleInGUI = No
+      persistent = Yes
+      default = MidsagittalSurface
+    }
+    Field update {
+      type = Trigger
+      text = "Initiates update of all output field values."
+      title = Update
+      visibleInGUI = Yes
+      persistent = Yes
+      default = ""
+    }
+    Field clear {
+      type = Trigger
+      text = "Clears all output field values to a clean initial state."
+      title = Clear
+      visibleInGUI = Yes
+      persistent = Yes
+      default = ""
+    }
+    Field onInputChangeBehavior {
+      type = Enum
+      deprecatedName = shouldUpdateAutomatically,shouldAutoUpdate
+      text = "Declares how the module should react if a value of an input field changes."
+      title = "On Input Change Behavior"
+      visibleInGUI = Yes
+      items  {
+        item Update {
+          title = Update
+          text = ""
+          deprecatedName = TRUE
+        }
+        item Clear {
+          title = Clear
+          text = ""
+          deprecatedName = FALSE
+        }
+      }
+      persistent = Yes
+      default = Clear
+    }
+    Field statusCode {
+      type = Enum
+      text = "Reflects module's status (successful or failed computations) as one of some predefined enumeration values."
+      title = "Status Code"
+      visibleInGUI = Yes
+      items  {
+        item Ok {
+          title = Ok
+          text = ""
+        }
+        item "Invalid input object" {
+          title = "Invalid input object"
+          text = ""
+        }
+        item "Invalid input parameter" {
+          title = "Invalid input parameter"
+          text = ""
+        }
+        item "Internal error" {
+          title = "Internal error"
+          text = ""
+        }
+      }
+      persistent = No
+    }
+    Field statusMessage {
+      type = String
+      text = "Gives additional, detailed information about status code as human-readable message."
+      title = "Status Message"
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field hasValidOutput {
+      type = Bool
+      text = "Indicates validity of output field values (success of computation)."
+      title = "Has Valid Output"
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field updateDone {
+      type = Trigger
+      text = "Notifies that an update was performed (Check status interface fields to identify success or failure)."
+      title = []
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field inPlane1 {
+      type = Plane
+      text = "Plane used to initialize the method (for example: output of :module:`MidsagittalPlane`)"
+      title = "Plane 1"
+      visibleInGUI = Yes
+      persistent = Yes
+      default = "1 0 0 0"
+    }
+    Field inPlane2 {
+      type = Plane
+      text = "Second plane used to initialize the method (for example: output of :module:`MidsagittalPlane`)"
+      title = "Plane 2"
+      visibleInGUI = Yes
+      persistent = Yes
+      default = "1 0 0 0"
+    }
+    Field inUseSecondPlane {
+      type = Bool
+      text = ""
+      title = "Use second plane"
+      visibleInGUI = Yes
+      persistent = Yes
+      default = FALSE
+    }
+    Field inCMSPx {
+      type = Integer
+      text = "Central slice of the plane, in voxel-coordinates. Used to compute the reference-slices."
+      title = "Central slice"
+      visibleInGUI = Yes
+      persistent = Yes
+      default = 0
+    }
+    Field inBins {
+      type = Integer
+      text = "Histogram bins"
+      title = Bins
+      visibleInGUI = Yes
+      persistent = Yes
+      default = 64
+    }
+    Field inGridSize {
+      type = Double
+      text = "Size of the grid in mm"
+      title = "Grid size (mm)"
+      visibleInGUI = Yes
+      persistent = Yes
+      default = 30
+    }
+    Field inMaxSize {
+      type = Integer
+      text = "Optimizer stuff, see documentation"
+      title = MaxSize
+      visibleInGUI = Yes
+      persistent = Yes
+      default = 1000
+    }
+    Field inDelta {
+      type = Double
+      text = "Optimizer stuff, see documentation"
+      title = Delta
+      visibleInGUI = Yes
+      persistent = Yes
+      default = 1e-05
+    }
+    Field inEps {
+      type = Double
+      text = "Optimizer stuff, see documentation"
+      title = Eps
+      visibleInGUI = Yes
+      persistent = Yes
+      default = 1
+    }
+    Field inOptimizer {
+      type = Enum
+      text = Optimizer
+      title = Optimizer
+      visibleInGUI = Yes
+      items  {
+        item bfgs {
+          title = bfgs
+          text = ""
+        }
+        item cg {
+          title = cg
+          text = ""
+        }
+        item lbfgs {
+          title = lbfgs
+          text = ""
+        }
+      }
+      persistent = Yes
+      default = lbfgs
+    }
+    text = ""
+  }
+}

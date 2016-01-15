@@ -1,0 +1,737 @@
+// MDL v1 utf8
+network  {
+  watchlist = ""
+}
+module MidsagittalPlaneSplit {
+  internal  {
+    frame = "1225 565 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "719 785 375 393"
+        sizeHint = "363 393"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MidsagittalPlaneSplit
+    onInputChangeBehavior = Update
+    inIntersectionMode = antialiasing
+    inVolumeThreshold = 0.5
+    inUseGlobalSubsample = TRUE
+    inGlobalSubsample = 6
+    inXSubsample = 4
+    inYSubsample = 4
+    inZSubsample = 4
+    inPlane = "1 0 0 0"
+  }
+}
+module MidsagittalSurfaceMacro {
+  internal  {
+    frame = "821 845 168 56"
+    moduleGroupName = ""
+    windows  {
+      window _automatic {
+        geometry = "717 329 500 600"
+        sizeHint = "260 223"
+        wasOpen = no
+      }
+      window _default {
+        geometry = "1212 358 465 594"
+        sizeHint = "465 594"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MidsagittalSurfaceMacro
+    inUseDualPlane = TRUE
+    inDualPlaneAngle = 3.5
+    outAngle = 0
+    outMsp = "1 0 0 0"
+    outMspA = "1 0 0 0"
+    outMspP = "1 0 0 0"
+    advanced = FALSE
+    progress = 0
+    onInputChangeBehavior = Clear
+  }
+}
+module SoView2DMidsagittalSurface {
+  internal  {
+    frame = "897 613 192 56"
+    moduleGroupName = ""
+  }
+  fields  {
+    instanceName = SoView2DMidsagittalSurface
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = TRUE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = PRESSED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = IGNORED
+    wantsAllEvents = FALSE
+    wantsKeyEvents = FALSE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = FALSE
+    clipToSlice = FALSE
+    cursorShape = UNDEFINED_CURSOR
+  }
+}
+module MidsagittalApp/ImageLoader {
+  internal  {
+    frame = "825 977 384 64"
+    moduleGroupName = ""
+    localMacro = 1
+  }
+  fields  {
+    instanceName = ImageLoader
+    numberOfImages = 0
+    status = ""
+  }
+}
+module Console {
+  internal  {
+    frame = "1017 525 80 56"
+    moduleGroupName = ""
+  }
+  fields  {
+    instanceName = Console
+    logInformation = TRUE
+    logWarnings = TRUE
+    logErrors = TRUE
+    logFatals = TRUE
+    logDebugs = TRUE
+    logCouts = TRUE
+    logCerrs = TRUE
+    logOthers = TRUE
+    logLine = TRUE
+    logFileName = TRUE
+    logTime = TRUE
+    logFunc = TRUE
+    logReason = TRUE
+    logHandling = TRUE
+    logLibraryPrefix = TRUE
+    logMessageType = TRUE
+    maxConsoleSize = 3
+  }
+}
+module ImagePropertyConvert {
+  internal  {
+    frame = "1293 653 152 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "805 314 324 631"
+        sizeHint = "324 631"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImagePropertyConvert
+    changeDimensionInfo = FALSE
+    cDimInfo = ""
+    tDimInfo = ""
+    uDimInfo = ""
+    a00 = 1
+    a01 = 0
+    a02 = 0
+    a03 = 0
+    a10 = 0
+    a11 = 1
+    a12 = 0
+    a13 = 0
+    a20 = 0
+    a21 = 0
+    a22 = 1
+    a23 = 0
+    a30 = 0
+    a31 = 0
+    a32 = 0
+    a33 = 1
+    worldMatrix = "1 0 0 0
+0 1 0 0
+0 0 1 0
+0 0 0 1"
+    changeDatatype = TRUE
+    datatype = float
+    changePageSize = FALSE
+    pageSizeX = 32
+    pageSizeY = 32
+    pageSizeZ = 1
+    pageSizeC = 1
+    pageSizeT = 1
+    pageSizeU = 1
+    changeMinGreyvalue = TRUE
+    minGreyvalue = 0
+    changeMaxGreyvalue = TRUE
+    maxGreyvalue = 1
+    changeWorldMatrix = FALSE
+    voxelSizeX = 1
+    voxelSizeY = 1
+    voxelSizeZ = 1
+    autoApply = TRUE
+  }
+}
+module Arithmetic1 {
+  internal  {
+    frame = "1317 749 104 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-715 523 285 64"
+        sizeHint = "283 64"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OneImage
+    function = Add
+    constant = 1
+  }
+}
+module Arithmetic1 {
+  internal  {
+    frame = "1321 837 96 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-715 523 285 64"
+        sizeHint = "283 64"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ZeroImage
+    function = Multiply
+    constant = 0
+  }
+}
+module MidsagittalSurfaceSplit {
+  internal  {
+    frame = "1393 565 160 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "843 540 274 179"
+        sizeHint = "249 179"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MidsagittalSurfaceSplit
+    onInputChangeBehavior = Update
+    inIntersectionMode = antialiasing
+    inVolumeThreshold = 0.5
+    inUseGlobalSubsample = TRUE
+    inGlobalSubsample = 6
+    inXSubsample = 4
+    inYSubsample = 4
+    inZSubsample = 4
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "1409 441 128 64"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "839 428 307 403"
+        sizeHint = "256 403"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SurfaceSave
+    useCompression = FALSE
+    correctSubVoxelShift = TRUE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = ""
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "1233 441 128 64"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "839 428 307 403"
+        sizeHint = "256 403"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = PlaneSave
+    useCompression = FALSE
+    correctSubVoxelShift = TRUE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = ""
+  }
+}
+module View2D {
+  internal  {
+    frame = "709 93 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "2382 331 400 400"
+        sizeHint = "400 400"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = View2D
+    inventorInputOn = TRUE
+    inventorOutputOn = FALSE
+    view2DExtensionsOn = TRUE
+    startSlice = 0
+    numSlices = 1
+    numXSlices = 1
+    sliceStep = 1
+    slab = 1
+    blendMode = BLEND_REPLACE
+    timePoint = 0
+    maxTimePoint = 0
+    filterMode = FILTER_LINEAR
+    standardKeys = TRUE
+    cineMode = CINE_Z
+    cineDirection = CINE_PINGPONG
+    cineRepeat = CINE_ONCE
+    cineSpeed = 0.1
+    cineAlwaysReset = TRUE
+    snapToCenter = FALSE
+    zoomMode = VIEW2D_AUTO_ZOOM
+    unzoomOnImageChange = FALSE
+    sliceZoom = 1
+    sliceZoomSynced = 1
+    baseColor = "1 1 1"
+    margin = "2 2"
+    sliceOrigin = "0 0"
+    useShaders = TRUE
+    useManagedInteraction = FALSE
+    lutCenter = 0
+    lutWidth = 0
+    annotationOn = TRUE
+    annotationMode = ANNO_MODE_AUTO
+    annotationSizeMode = ANNO_SHOW_DETAILED
+    annotationCol = "0.899999976158142 0.899999976158142 0.899999976158142"
+    annotationFontSize = ANNO_SIZE_AUTO
+    annoCoords = Voxel
+    annoCTValue = AsIs
+    borderOn = FALSE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    valueHighPrecision = TRUE
+    maxPrecision = 4
+    enableSlicing = TRUE
+    useRelativeLUTIfNoInputImage = FALSE
+    hiResRendering = FALSE
+  }
+}
+module SoGroup {
+  internal  {
+    frame = "989 457 120 64"
+    moduleGroupName = ""
+  }
+  fields  {
+    instanceName = SoGroupSpline
+  }
+}
+module SoView2DMarkerEditor {
+  internal  {
+    frame = "1049 573 160 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "665 290 620 679"
+        sizeHint = "605 679"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoView2DMarkerEditor
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = FALSE
+    fixZOn = TRUE
+    color = "1 0 0"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = PRESSED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = IGNORED
+    wantsAllEvents = FALSE
+    wantsKeyEvents = TRUE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = FALSE
+    clipToSlice = FALSE
+    cursorShape = UNDEFINED_CURSOR
+    depthVisibility = 2
+    snapToVoxel = TRUE
+    snapToSlice = TRUE
+    currentType = 0
+    deleteOnClick = FALSE
+    addOnClick = TRUE
+    alphaFactor = 1
+    minimumAlpha = 0.1
+    iconFile = $(MLAB_MeVisLab_Standard)/Modules/Resources/Images/markerIcons.tif
+    useIconFile = FALSE
+    iconIdx = 0
+    drawMarkerShapesWithLines = FALSE
+    selectingOn = TRUE
+    actOnReleaseOnly = FALSE
+    editorMode = EDIT_MARKER
+    colorMode = COLOR_BY_TYPE
+    textColorMode = COLOR_TEXT
+    textMode = TEXT_OFF
+    textPosition = TEXT_POSITION_RIGHT_BELOW
+    textColor = "1 1 1"
+    textShadow = TRUE
+    textFontSize = 12
+    showTextOnlyForSelectedMarker = FALSE
+    cutText = FALSE
+    maxNumberOfLines = 1
+    vectorArrow = VECTOR_END_ARROW
+    vectorLineWidth = 1
+    useAntiAlias = TRUE
+    useVectorLengthAsMarkerSize = FALSE
+    depthVectorDrawMode = DRAW_HIGHLIGHT_SLICE_SEGMENT
+    drawMode = DRAW_MARKER
+    highlightSelection = TRUE
+    selectiveDrawing = FALSE
+    selectionBoxesForCurrentOnly = FALSE
+    cooperative = FALSE
+    overwriteCurrentTimePoint = FALSE
+    newCurrentTimePoint = 0
+    depthVisibilityMode = DEPTH_IN_SLICES
+    listString = ""
+    index = 0
+    persistent = FALSE
+    listStringEnable = FALSE
+    applySelect = FALSE
+    name = ""
+    newName = ""
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = FALSE
+    posXYZ = "0 0 0"
+    posC = 0
+    posT = 0
+    posU = 0
+    vecXYZ = "0 0 0"
+    type = 0
+    newPosXYZ = "0 0 0"
+    newPosC = 0
+    newPosT = 0
+    newPosU = 0
+    newVecXYZ = "0 0 0"
+    newType = 0
+  }
+}
+module SoView2DPlane {
+  internal  {
+    frame = "429 593 120 64"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "138 521 404 450"
+        sizeHint = "404 450"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MSP
+    interactionProviderID = ""
+    drawingOn = FALSE
+    editingOn = FALSE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = PRESSED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = IGNORED
+    wantsAllEvents = TRUE
+    wantsKeyEvents = FALSE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = FALSE
+    clipToSlice = TRUE
+    cursorShape = UNDEFINED_CURSOR
+    plane = "1 0 0 0"
+    maskValidAndHit = FALSE
+    blendMin = 0.1
+    blendMax = 1
+    useTranslationRange = FALSE
+    translationRangeMin = -1
+    translationRangeMax = 1
+    normalOn = FALSE
+    shadowOn = FALSE
+    externalRotationAxisOn = FALSE
+    allowMoveExternalRotationAxis = FALSE
+    externalRotationAxis = "0 0 0"
+    centerGapSize = 0
+    normalSize = 10
+    normalOffset = 0
+    normalShape = TRIANGLE
+    rotationDifference = "0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0"
+    translationLineFraction = 0.5
+    fixedLineWidth = FALSE
+    interactionMode = BOTH
+    useAntiAliasing = TRUE
+    useMouseCursors = TRUE
+  }
+}
+module SoGroup {
+  internal  {
+    frame = "561 449 128 64"
+    moduleGroupName = ""
+    windows  {
+      window _viewer {
+        geometry = "767 429 400 400"
+        sizeHint = "400 400"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "717 329 500 600"
+        sizeHint = "260 223"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoGroupPlane
+  }
+}
+module SoView2DPlane {
+  internal  {
+    frame = "565 593 120 64"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "125 430 404 450"
+        sizeHint = "404 450"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MSPAnterior
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = FALSE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = PRESSED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = IGNORED
+    wantsAllEvents = TRUE
+    wantsKeyEvents = FALSE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = FALSE
+    clipToSlice = TRUE
+    cursorShape = UNDEFINED_CURSOR
+    plane = "1 0 0 0"
+    maskValidAndHit = FALSE
+    blendMin = 0.1
+    blendMax = 1
+    useTranslationRange = FALSE
+    translationRangeMin = -1
+    translationRangeMax = 1
+    normalOn = FALSE
+    shadowOn = FALSE
+    externalRotationAxisOn = FALSE
+    allowMoveExternalRotationAxis = FALSE
+    externalRotationAxis = "0 0 0"
+    centerGapSize = 0
+    normalSize = 10
+    normalOffset = 0
+    normalShape = TRIANGLE
+    rotationDifference = "0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0"
+    translationLineFraction = 0.5
+    fixedLineWidth = FALSE
+    interactionMode = BOTH
+    useAntiAliasing = TRUE
+    useMouseCursors = TRUE
+  }
+}
+module SoView2DPlane {
+  internal  {
+    frame = "701 593 120 64"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "222 429 404 450"
+        sizeHint = "404 450"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MSPPosterior
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = FALSE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = PRESSED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = IGNORED
+    wantsAllEvents = TRUE
+    wantsKeyEvents = FALSE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = FALSE
+    clipToSlice = TRUE
+    cursorShape = UNDEFINED_CURSOR
+    plane = "1 0 0 0"
+    maskValidAndHit = FALSE
+    blendMin = 0.1
+    blendMax = 1
+    useTranslationRange = FALSE
+    translationRangeMin = -1
+    translationRangeMax = 1
+    normalOn = FALSE
+    shadowOn = FALSE
+    externalRotationAxisOn = FALSE
+    allowMoveExternalRotationAxis = FALSE
+    externalRotationAxis = "0 0 0"
+    centerGapSize = 0
+    normalSize = 10
+    normalOffset = 0
+    normalShape = TRIANGLE
+    rotationDifference = "0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0"
+    translationLineFraction = 0.5
+    fixedLineWidth = FALSE
+    interactionMode = BOTH
+    useAntiAliasing = TRUE
+    useMouseCursors = TRUE
+  }
+}
+module SoGroup {
+  internal  {
+    frame = "761 197 96 56"
+    moduleGroupName = ""
+  }
+  fields  {
+    instanceName = SoGroup
+  }
+}
+module SoToggle {
+  internal  {
+    frame = "569 329 112 64"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "939 617 116 25"
+        sizeHint = "56 25"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoTogglePlane
+    whichChild = -1
+    on = FALSE
+  }
+}
+module SoToggle {
+  internal  {
+    frame = "965 361 120 64"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "939 617 116 25"
+        sizeHint = "56 25"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoToggleSpline
+    whichChild = -3
+    on = TRUE
+  }
+}
+connections  {
+  MidsagittalPlaneSplit.input0 = ImagePropertyConvert.output0
+  MidsagittalPlaneSplit.inPlane = MidsagittalSurfaceMacro.outMsp
+  MidsagittalSurfaceMacro.input0 = ImageLoader.output0
+  SoView2DMidsagittalSurface.inMidsagittalSurface = MidsagittalSurfaceMacro.outputSpline
+  ImagePropertyConvert.input0 = OneImage.output0
+  OneImage.input0 = ZeroImage.output0
+  ZeroImage.input0 = ImageLoader.output0
+  MidsagittalSurfaceSplit.input0 = ImagePropertyConvert.output0
+  MidsagittalSurfaceSplit.inMidsagittalSurface = MidsagittalSurfaceMacro.outputSpline
+  SurfaceSave.input0 = MidsagittalSurfaceSplit.output0
+  PlaneSave.input0 = MidsagittalPlaneSplit.output1
+  View2D.inImage = MidsagittalSurfaceMacro.outputTransversalInputImage
+  View2D.inInvPreLUT = SoGroup.self
+  SoGroupSpline.children = SoView2DMarkerEditor.self
+  SoView2DMarkerEditor.inXMarkerList = MidsagittalSurfaceMacro.outputControlPoints
+  MSP.plane = MidsagittalSurfaceMacro.outMsp
+  SoGroupPlane.children = "MSP.self MSPAnterior.self MSPPosterior.self"
+  MSPAnterior.plane = MidsagittalSurfaceMacro.outMspA
+  MSPPosterior.plane = MidsagittalSurfaceMacro.outMspP
+  SoGroup.children = "SoTogglePlane.self SoView2DMidsagittalSurface.self SoToggleSpline.self"
+  SoTogglePlane.children = SoGroupPlane.self
+  SoToggleSpline.children = SoGroupSpline.self
+}
+networkModel = ""

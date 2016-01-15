@@ -1,0 +1,15 @@
+expandY = Expanding
+
+DynamicFrame {
+  expandY = False
+  name    = loaders
+}
+
+Field status {
+  edit = False
+}
+    
+Viewer View2D.scene.self {
+  expandY = Expanding
+  type    = SoRenderArea
+}

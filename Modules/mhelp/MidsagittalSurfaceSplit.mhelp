@@ -1,0 +1,233 @@
+ModuleHelp  {
+  MetaInformation  {
+    definition = Projects/ISIMidsagittal/Modules/ISIMidsagittal.def
+    moduleName = MidsagittalSurfaceSplit
+    moduleType = MLModule
+    author = "Hugo Kuijf"
+    DLL = ISIMidsagittal
+    genre = ""
+    keywords = "brain midsagittal plane surface ct mri"
+    seeAlso = MidsagittalSurface
+    package = Neuro
+    packageGroup = ISI
+  }
+  Purpose  {
+    text = "Splits the input image into left/right, according to the provided midsagittal surface. "
+  }
+  Usage  {
+    text = "Connect an input image and the output of the module :module:`MidsagittalSurface`."
+  }
+  Details  {
+    text = ""
+  }
+  Interaction  {
+    text = ""
+  }
+  Tips  {
+    text = "Provide an input image where all voxel values are set to 1, to create a binary mask."
+  }
+  Windows  {
+    text = ""
+    Window _default {
+      title = ""
+      text = ".. screenshot:: _default"
+    }
+  }
+  Inputs  {
+    text = ""
+    Field input0 {
+      type = Image
+      text = "Input image"
+    }
+    Field inMidsagittalSurface {
+      type = MLBase
+      text = "Result from :module:`MidsagittalSurface`."
+    }
+  }
+  Outputs  {
+    text = ""
+    Field output0 {
+      type = Image
+      text = "Comment missing."
+    }
+    Field output1 {
+      type = Image
+      text = ""
+    }
+  }
+  Parameters  {
+    Field instanceName {
+      type = String
+      text = ""
+      title = ""
+      needsDocumentation = No
+      visibleInGUI = No
+      persistent = Yes
+      default = MidsagittalSurfaceSplit
+    }
+    Field update {
+      type = Trigger
+      text = "Initiates update of all output field values."
+      title = Update
+      visibleInGUI = Yes
+      persistent = Yes
+      default = ""
+    }
+    Field clear {
+      type = Trigger
+      text = "Clears all output field values to a clean initial state."
+      title = Clear
+      visibleInGUI = Yes
+      persistent = Yes
+      default = ""
+    }
+    Field onInputChangeBehavior {
+      type = Enum
+      deprecatedName = shouldUpdateAutomatically,shouldAutoUpdate
+      text = "Declares how the module should react if a value of an input field changes."
+      title = "On Input Change Behavior"
+      visibleInGUI = Yes
+      items  {
+        item Update {
+          title = Update
+          text = ""
+          deprecatedName = TRUE
+        }
+        item Clear {
+          title = Clear
+          text = ""
+          deprecatedName = FALSE
+        }
+      }
+      persistent = Yes
+      default = Clear
+    }
+    Field statusCode {
+      type = Enum
+      text = "Reflects module's status (successful or failed computations) as one of some predefined enumeration values."
+      title = "Status Code"
+      visibleInGUI = Yes
+      items  {
+        item Ok {
+          title = Ok
+          text = ""
+        }
+        item "Invalid input object" {
+          title = "Invalid input object"
+          text = ""
+        }
+        item "Invalid input parameter" {
+          title = "Invalid input parameter"
+          text = ""
+        }
+        item "Internal error" {
+          title = "Internal error"
+          text = ""
+        }
+      }
+      persistent = No
+    }
+    Field statusMessage {
+      type = String
+      text = "Gives additional, detailed information about status code as human-readable message."
+      title = "Status Message"
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field hasValidOutput {
+      type = Bool
+      text = "Indicates validity of output field values (success of computation)."
+      title = "Has Valid Output"
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field updateDone {
+      type = Trigger
+      text = "Notifies that an update was performed (Check status interface fields to identify success or failure)."
+      title = []
+      visibleInGUI = Yes
+      persistent = No
+    }
+    Field inIntersectionMode {
+      type = Enum
+      text = "Comment missing."
+      title = "Intersection mode"
+      visibleInGUI = Yes
+      items  {
+        item midpoint {
+          title = midpoint
+          text = ""
+        }
+        item volume {
+          title = volume
+          text = ""
+        }
+        item antialiasing {
+          title = antialiasing
+          text = ""
+        }
+      }
+      persistent = Yes
+      default = midpoint
+    }
+    Field inVolumeThreshold {
+      type = Double
+      text = "Comment missing."
+      title = "Volume threshold"
+      visibleInGUI = Yes
+      min = 0
+      max = 1
+      persistent = Yes
+      default = 0.5
+    }
+    Field inUseGlobalSubsample {
+      type = Bool
+      text = "Comment missing."
+      title = "Use global subsample"
+      visibleInGUI = Yes
+      persistent = Yes
+      default = TRUE
+    }
+    Field inGlobalSubsample {
+      type = Integer
+      text = "Comment missing."
+      title = Subsample
+      visibleInGUI = Yes
+      min = 1
+      max = 6
+      persistent = Yes
+      default = 4
+    }
+    Field inXSubsample {
+      type = Integer
+      text = "Comment missing."
+      title = X
+      visibleInGUI = Yes
+      min = 1
+      max = 6
+      persistent = Yes
+      default = 4
+    }
+    Field inYSubsample {
+      type = Integer
+      text = "Comment missing."
+      title = Y
+      visibleInGUI = Yes
+      min = 1
+      max = 6
+      persistent = Yes
+      default = 4
+    }
+    Field inZSubsample {
+      type = Integer
+      text = "Comment missing."
+      title = Z
+      visibleInGUI = Yes
+      min = 1
+      max = 6
+      persistent = Yes
+      default = 4
+    }
+    text = ""
+  }
+}

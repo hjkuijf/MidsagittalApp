@@ -1,0 +1,74 @@
+Interface  {
+  Inputs {}
+  Outputs {
+    Field output0 { type = Image }
+    Field output1 { type = Image }
+    Field output2 { type = Image }
+    Field output3 { type = Image }
+    Field output4 { type = Image }
+    Field output5 { type = Image }
+    Field output6 { type = Image }
+    Field output7 { type = Image }
+    Field output8 { type = Image }
+    Field output9 { type = Image }
+    Field output10 { type = Image }
+    Field output11 { type = Image }
+    Field output12 { type = Image }
+    Field output13 { type = Image }
+    Field output14 { type = Image }
+    Field output15 { type = Image }
+  }
+  Parameters {
+    Field numberOfImages {
+      type = Int
+      value = 0
+    }
+    
+    Field status {
+      type = String
+    }
+  }
+}
+
+Description {
+  Field numberOfImages {
+    min = 0
+    max = 16
+  }
+}
+
+Commands {
+  source = $(LOCAL)/ImageLoader.py
+}
+
+Window SingleImage {
+  Category {    
+    #include $(LOCAL)/ImageLoaderViewer.script
+    
+    Execute = "*py: ctx.field("numberOfImages").setIntValue(1), setNumberOfImages(ctx.field("numberOfImages")) *"
+  }
+}
+
+Window MultipleImages {
+  Category {
+    Field numberOfImages {}
+    
+    #include $(LOCAL)/ImageLoaderViewer.script
+  
+    FieldListener numberOfImages {
+      command = setNumberOfImages
+    }
+    Execute = "*py: ctx.field("numberOfImages").setIntValue(2)*"
+  }
+}
+
+Deployment {  
+  DLL       = MLImageFile
+  directory = $(MLAB_MeVisLab_Standard)/Modules/ML/MLImageFile
+  
+  DLL       = MLImageFormat
+  directory = $(MLAB_MeVisLab_Standard)/Modules/ML/MLImageFormat
+  
+  DLL       = MLITKManualBinding
+  directory = $(MLAB_FMEwork_ReleaseMeVis)/Modules/ML/MLITKManualBinding
+}

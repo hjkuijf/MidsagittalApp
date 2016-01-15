@@ -1,0 +1,242 @@
+//----------------------------------------------------------------------------------
+//! Macro module MidsagittalApp
+/*!
+// \file    MidsagittalApp.script
+// \author  Hugo
+// \date    2014-07-30
+//
+// 
+*/
+//----------------------------------------------------------------------------------
+
+
+
+Interface {
+  Inputs {}
+  Outputs {}
+  Parameters {
+    Field outputFilename {
+      type = String
+    }    
+    
+    Field update {
+      type = Trigger
+    }
+    
+    Field open {
+      type = Trigger
+    }
+    
+    Field save {
+      type = Trigger
+    }
+  }
+}
+
+
+Commands {
+  source = $(LOCAL_BASENAME).py  
+  initCommand = "*py: MidsagittalApp( ctx )*"
+}
+
+Window {
+  title = "MidsagittalApp - © Hugo J. Kuijf - All rights reserved"
+  
+  shouldCloseCommand = shouldClose
+  
+  Category {
+    expandY = True
+    
+    Horizontal {
+      expandY = Expanding
+    
+      Viewer View2D.scene.self {
+        type = SoRenderArea
+      }
+      
+      Vertical {
+        alignY       = Top
+        expandY      = Expanding
+        maximumWidth = 400
+        
+        Box Image {
+          Button open {
+            title   = "Open image"
+          }
+          
+          Label {
+            title = "Supported file formats: all ITK file formats, dicom, tiff, dicom/tiff, analyze, and mlImageFileFormat. Note that DICOM has to be a single 3D file."
+            textWrap = WordBreak
+          }
+          
+          Label {
+            title    = "Images will be reformatted to be axial/transversal, based on the world coordinates in the file. If the view on the left is NOT a transversal view, you must reformat the image yourself outside this application."
+            textWrap = WordBreak
+          }
+        }
+        
+        Box "Midsagittal surface" {   
+          Horizontal {
+            Button update { }
+          
+            ProgressBar MidsagittalSurfaceMacro.progress {
+              textVisible = False
+            }
+          }
+          
+          TabView {
+            TabViewItem Main {
+              Box "Dual plane" {
+      
+                CheckBox MidsagittalSurfaceMacro.inUseDualPlane { title = "Use dual plane" }
+      
+                Horizontal {
+                  alignX    = Left
+                  dependsOn = MidsagittalSurfaceMacro.inUseDualPlane
+        
+                  Field MidsagittalSurfaceMacro.inDualPlaneAngle {
+                    step  = 0.5
+                    title = Angle:
+                  }
+                  Label {
+                    title      = "&deg;, recommended: 3.5&deg;"
+                    textFormat = Rich
+                  }
+                }
+              }
+    
+    
+              Box Output {
+                Field MidsagittalSurfaceMacro.outMsp { 
+                  alignGroupX   = msp
+                  fieldDragging = False
+                  title       = MSP: 
+                }
+      
+                Vertical {
+                  dependsOn = MidsagittalSurfaceMacro.inUseDualPlane
+        
+                  Field MidsagittalSurfaceMacro.outMspA {
+                    alignGroupX   = msp 
+                    fieldDragging = False
+                    title         = "MSP Anterior:" 
+                  }
+                  Field MidsagittalSurfaceMacro.outMspP { 
+                    alignGroupX   = msp
+                    fieldDragging = False
+                    title         = "MSP Posterior:" 
+                  }
+                  Horizontal {
+                    Field MidsagittalSurfaceMacro.outAngle {
+                      alignGroupX   = msp
+                      expandX       = Expanding
+                      edit          = False 
+                      fieldDragging = False                    
+                    }
+                    Label {
+                      title      = "&deg;"
+                      textFormat = Rich
+                    }
+                  }
+                }
+              }
+    
+              HyperLabel {
+                minimumHeight = 100
+                title         = "Based on: <a href='http://dx.doi.org/10.1007/s12021-013-9215-0'>H.J. Kuijf, S.J. van Veluw, M.I. Geerlings, M.A. Viergever, G.J. Biessels, K.L. Vincken, 'Automatic extraction of the midsagittal surface from brain MR images using the Kullback-Leibler measure', <i>Neuroinformatics</i>, 2014, nr. 3, vol. 12, pp. 395-403.</a>"
+              }
+               
+            }
+  
+            Category Settings {
+              Horizontal {
+                Field MidsagittalSurfaceMacro.MidsagittalPlane.inBins {
+                  fieldDragging = False
+                  title         = "Histogram bins:"
+                  alignGroupX   = groep
+                }
+                Label {
+                  title = "Keep low, e.g. 64, but ensure contrast between CSF and tissue."
+                }
+              }
+    
+              Horizontal {
+                Field MidsagittalSurfaceMacro.MidsagittalSurface.inGridSize {
+                  alignGroupX = groep    
+                  title = "Grid size:"
+                }
+                Label {
+                  title = "mm. Recommended value: 30 mm."
+                }
+              }
+    
+              CheckBox MidsagittalSurfaceMacro.advanced {
+                title = "Show advanced settings"
+              }
+    
+              Vertical {
+                visibleOn = MidsagittalSurfaceMacro.advanced
+      
+                Box MidsagittalSurfaceMacro.OrthoReformat3 {
+                  Field MidsagittalSurfaceMacro.OrthoReformat3.useGlobalInputImage {}
+                }
+      
+                Box MidsagittalSurfaceMacro.MidsagittalSurface {
+                  Field MidsagittalSurfaceMacro.MidsagittalSurface.inOptimizer { title = "Optimizer:" }
+                  Field MidsagittalSurfaceMacro.MidsagittalSurface.inMaxSize { title = "Max size:" }
+                  Field MidsagittalSurfaceMacro.MidsagittalSurface.inDelta { title = "Delta:" }
+                  Field MidsagittalSurfaceMacro.MidsagittalSurface.inEps { title = "Eps:" }
+                }
+              }
+            }
+            
+            Category Console {
+              TextView Console.consoleString {
+                edit      = False
+                vscroller = Auto
+                console   = Yes
+              }
+            }
+          }
+        }
+        
+        Box Viewer {
+          CheckBox SoTogglePlane.on {
+            fieldDragging = False
+            title         = "Show midsagittal plane"
+          }
+          CheckBox SoToggleSpline.on {
+            fieldDragging = False
+            title         = "Show midsagittal surface"
+          }
+        }
+        
+        
+        
+        Box Save {
+          Field outputFilename {
+            fieldDragging = False
+            browseButton  = True
+            browseMode   = save            
+          }
+          
+          Button save { }
+          
+          Label {
+            textFormat = Rich
+            textWrap   = WordBreak
+            title      = "*<p>Pressing Save will save four files:</p>
+<ul>
+  <li><i>outputFilename</i>.plane.nii</li>
+  <li><i>outputFilename</i>.plane.txt</li>
+  <li><i>outputFilename</i>.surface.nii</li>
+  <li><i>outputFilename</i>.points.txt</li>
+</ul>
+<p>These files contain a probabilistic mask image of the midsagittal plane, a text-file with the three plane equations, a probabilistic mask image of midsagittal surface, and a textfile with the control points of the surface.</p>
+<p>Please note: saving can be slow. Wait for the confirmation box.</p>*"
+          }
+        }
+      }
+    }
+  }
+}

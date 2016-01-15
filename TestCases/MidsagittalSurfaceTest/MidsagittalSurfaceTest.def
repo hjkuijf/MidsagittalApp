@@ -1,0 +1,8 @@
+// **InsertLicense** code
+
+FunctionalTestCase MidsagittalSurfaceTest {
+  author = "Hugo"
+  comment = ""
+  timeout = 60
+  scriptFile = "$(LOCAL)/MidsagittalSurfaceTest.py"
+}

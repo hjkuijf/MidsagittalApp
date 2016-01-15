@@ -1,0 +1,121 @@
+
+Interface {
+  Inputs {
+    Field input0 {
+      internalName = OrthoReformat3.input0
+    }
+  }
+  
+  Outputs {
+    Field outputTransversalInputImage {
+      internalName = Bypass.output0
+    }
+    Field outputPlaneImage {
+      internalName = MemoryCache.output0
+    }
+    Field outputCurvedSurfaceImage {
+      internalName = MidsagittalSurface.output0
+    }
+    Field outputSpline {
+      internalName = MidsagittalSurface.outSpline
+    }
+    Field outputControlPoints {
+      internalName = MidsagittalSurface.outXMarkerList
+    }
+  }
+
+  Parameters {
+    Field inUseDualPlane {
+      type  = Bool
+      value = True
+    }
+    Field inDualPlaneAngle {
+      type  = Double
+      value = 3.5
+    }
+    Field outAngle { type = Double }
+    Field outMsp  { type = Plane }
+    Field outMspA { type = Plane }
+    Field outMspP { type = Plane }
+    
+    Field advanced {
+      type  = Bool
+      value = False
+    }
+    Field progress {
+      type = Double
+    }
+    #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/AlgorithmMacroModule/Modules/Parameters.mdl"
+  }
+}
+
+Commands {
+  source = $(LOCAL_BASENAME).py
+  initCommand = "*py: MidsagittalSurfaceMacro( ctx )*"
+}
+
+Description {
+  Field inDualPlaneAngle {
+    min = 0
+  }
+}
+
+Window {
+  Vertical {
+    margin = 3
+    
+    Box Input {
+      Label {
+        title    = "In cases with extreme brain-torque, it can be beneficial to use the dual-plane approach. This technique computes the midsagittal plane independently for the anterior and posterior part of the brian. When the in-plane angle is larger than specified, both planes will be used to initialize the curved surface."
+        textWrap = WordBreak
+      }
+      
+      CheckBox inUseDualPlane {}
+      
+      Horizontal {
+        alignX    = Left
+        dependsOn = inUseDualPlane
+        
+        Field inDualPlaneAngle {
+          step  = 0.5
+          title = Angle:
+        }
+        Label {
+          title      = "&deg;, recommended: 3.5&deg;"
+          textFormat = Rich
+        }
+      }
+    }
+    
+    Box Output {
+      Field outMsp { 
+        alignGroupX = msp
+        title       = MSP: 
+      }
+      
+      Vertical {
+        dependsOn = inUseDualPlane
+        
+        Field outMspA {
+          alignGroupX = msp 
+          title       = "MSP Anterior:" 
+        }
+        Field outMspP { 
+          alignGroupX = msp
+          title       = "MSP Posterior:" 
+        }
+        Field outAngle {
+          alignGroupX = msp
+          expandX     = Expanding
+          edit        = False 
+        }
+      }
+    }
+    
+
+    #include "$(MLAB_FMEstable_ReleaseMeVis)/Projects/AlgorithmModule/AlgorithmMacroModule/Modules/Window.mdl"
+    HyperLabel {
+      title         = "Based on: <a href='http://dx.doi.org/10.1007/s12021-013-9215-0'>H.J. Kuijf, S.J. van Veluw, M.I. Geerlings, M.A. Viergever, G.J. Biessels, K.L. Vincken, 'Automatic extraction of the midsagittal surface from brain MR images using the Kullback-Leibler measure', <i>Neuroinformatics</i>, 2014, nr. 3, vol. 12, pp. 395-403.</a>"
+    }
+  }
+}
