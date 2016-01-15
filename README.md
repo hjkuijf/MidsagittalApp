@@ -1,4 +1,4 @@
-# MidsagittalApp
+# [MidsagittalApp](https://hjkuijf.github.io/MidsagittalApp/)
 MidsagittalApp: to compute the midsagittal plane and surface on brain images.
 
 If you use this software anywhere, I would appreciate if you cite the following article:
@@ -15,3 +15,6 @@ The code uses the self-contained project structure introduced in [MeVisLab](http
 
 ## Usage
 The main application is the module MidsagittalApp, which should be self-explanatory. Other modules have an associated Help-file.
+
+## Documentation
+For more information, go to the website: [MidsagittalApp](https://hjkuijf.github.io/MidsagittalApp/).
